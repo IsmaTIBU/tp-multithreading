@@ -113,6 +113,3 @@ cd tp4/build
 
 **Resultats :**  
 <img src="tp4/resultTP4.gif" width="800">
-
----
-
