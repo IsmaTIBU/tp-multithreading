@@ -12,7 +12,6 @@ class Task:
         self.time = 0
 
     def work(self):
-        # El tiempo de trabajo es de 1 segundo para simular un cálculo
         start = time.time()
         time.sleep(1)
         self.time = time.time() - start

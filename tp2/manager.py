@@ -1,7 +1,7 @@
 # tp2/manager.py
 from multiprocessing.managers import BaseManager
 from queue import Queue
-from Task import Task  # <--- AÑADIDO: Importar la clase Task
+from Task import Task
 
 task_queue = Queue()
 result_queue = Queue()
@@ -23,15 +23,11 @@ class QueueManager(BaseManager):
 
 QueueManager.register("get_task_queue", callable=get_task_queue_spy)
 QueueManager.register("get_result_queue", callable=get_result_queue_spy)
-QueueManager.register("Task", Task)  # <--- AÑADIDO: Registrar Task para serialización
+QueueManager.register("Task", Task)
 
 if __name__ == "__main__":
-    # ***** MODIFICACIÓN: Usar dirección de red *****
     address = ("localhost", 50000)
-    # **********************************************
     authkey = b"secret"
-
-    # Se elimina la lógica de os.path.exists/os.remove ya que no es un socket file.
 
     m = QueueManager(address=address, authkey=authkey)
 

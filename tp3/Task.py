@@ -1,7 +1,6 @@
 import time
 import json
-import math  # Importé pour une comparaison précise des nombres flottants
-
+import math
 
 class Task:
     def __init__(self, identifier, size=None):
@@ -18,7 +17,6 @@ class Task:
         self.time = time.time() - start
         print(f"Tâche {self.identifier} traitée en {self.time:.2f} sec")
 
-    # TP 3 - Étape 1: Sérialisation Python (to_json) [cite: 208, 209]
     def to_json(self) -> str:
         """Sérialise l'objet Task en chaîne JSON."""
         data = {
@@ -31,16 +29,13 @@ class Task:
         }
         return json.dumps(data)
 
-    # TP 3 - Étape 2: Désérialisation Python (from_json) [cite: 215, 216, 217]
     @staticmethod
     def from_json(text: str) -> "Task":
         """Désérialise une chaîne JSON en objet Task."""
         data = json.loads(text)
 
-        # Créer une nouvelle instance avec les attributs de base
         task = Task(identifier=data["identifier"], size=data["size"])
 
-        # Assigner les autres attributs
         task.a = data["a"]
         task.b = data["b"]
         task.x = data["x"]
@@ -48,13 +43,11 @@ class Task:
 
         return task
 
-    # TP 3 - Étape 3: Définir l'égalité (__eq__) [cite: 223, 224]
     def __eq__(self, other: "Task") -> bool:
         """Définit l'égalité entre deux objets Task, en gérant la tolérance pour les floats."""
         if not isinstance(other, Task):
             return NotImplemented
 
-        # Utiliser math.isclose pour comparer les floats ('time', 'a', 'b', 'x') avec une tolérance
         tolerance = 1e-9
 
         return (
