@@ -116,6 +116,3 @@ cd tp4/build
 
 ---
 
-## 📝 Licence
-
-MIT License - Voir le fichier `LICENSE` pour plus de détails.
